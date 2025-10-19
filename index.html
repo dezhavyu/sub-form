@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Підписка на розсилку</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="container">
+    <section id="subscribe-section">
+      <h1>Підпишіться на нашу розсилку</h1>
+      <form id="subscribe-form">
+        <label for="email">Email:</label>
+        <input type="email" id="email" placeholder="example@gmail.com" required />
+        <button type="submit">Підписатись</button>
+        <p id="error-message"></p>
+      </form>
+    </section>
+
+    <dialog id="success-dialog">
+      <h2>✅ Успішна підписка!</h2>
+      <p>Ви підписались на розсилку з email:</p>
+      <p id="user-email" class="email-display"></p>
+      <button id="close-dialog">Закрити</button>
+    </dialog>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

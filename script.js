@@ -1,30 +1,29 @@
-document.getElementById("subscribe-form").addEventListener("submit", function (e) {
+const form = document.getElementById("subscribe-form");
+const emailInput = document.getElementById("email");
+const errorMessage = document.getElementById("error-message");
+const dialog = document.getElementById("success-dialog");
+const emailDisplay = document.getElementById("user-email");
+const closeDialog = document.getElementById("close-dialog");
+
+form.addEventListener("submit", (e) => {
   e.preventDefault();
-
-  const emailInput = document.getElementById("email");
+  
   const email = emailInput.value.trim();
-  const errorMessage = document.getElementById("error-message");
+  const validEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-  // Регулярний вираз для валідації email
-  const regex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
-
-  if (!regex.test(email)) {
-    errorMessage.textContent = "Будь ласка, введіть коректну адресу email.";
-    emailInput.classList.add("error");
+  if (!validEmail.test(email)) {
+    errorMessage.textContent = "Please enter the valid email";
+    emailInput.style.borderColor = "#ff6a6a";
     return;
   }
 
-  // Якщо успішна валідація
   errorMessage.textContent = "";
-  document.getElementById("subscribe-section").style.display = "none";
+  emailInput.style.borderColor = "#ccc";
 
-  const dialog = document.getElementById("success-dialog");
-  document.getElementById("user-email").textContent = email;
+  emailDisplay.textContent = email;
   dialog.showModal();
+});
 
-  document.getElementById("close-dialog").addEventListener("click", () => {
-    dialog.close();
-    document.getElementById("subscribe-section").style.display = "block";
-    emailInput.value = "";
-  });
+closeDialog.addEventListener("click", () => {
+  dialog.close();
 });
